@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Google Sans", "Roboto", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html, body {
+  background-color: #08080A;
+  color: #F1F1F1;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Google Sans", "Roboto", system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0A0A0B; }
+::-webkit-scrollbar-thumb { background: #2a2a2d; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a3d; }
+
+/* Hide scrollbars on phone screens */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Animations */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+.pulse-ring { animation: pulse-ring 2s cubic-bezier(0.4,0,0.2,1) infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.ai-shimmer {
+  background: linear-gradient(90deg, #4285F4, #9b6dff, #ff4b91, #4285F4);
+  background-size: 200% 100%;
+  animation: shimmer 6s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.float { animation: float 4s ease-in-out infinite; }
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+.wave-bar { animation: wave 1.2s ease-in-out infinite; transform-origin: center; }
+
+.glass {
+  background: rgba(20, 20, 22, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #4285F4, #9b6dff, #ff4b91);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.dot-bg {
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
